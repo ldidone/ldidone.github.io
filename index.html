@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acoustic extinguisher fire Predictor</title>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <!-- BOOSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- ADD CUSTOM CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 class="display-3 text-center mb-5">Acoustic extinguisher fire Predictor</h1>
+    <div class="container center mt-5 mb-5" id="principal-container">
+        <form>
+            <div class="card">
+                <div id="specialCard" class="card-body special-card">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="InputSize">Size</label>
+                                <input type="number" class="form-control" id="InputSize" aria-describedby="sizeHelp" placeholder="Enter size" value="1">
+                                <small id="sizeHelp" class="form-text">Valid values: 1 - 7.</small>
+                              </div>
+                              <div class="form-group">
+                                <label class="font-weight-bold" for="InputFuel">Fuel</label>
+                                <select id="InputFuel" class="form-control" id="fuel">
+                                  <option selected>gasoline</option>
+                                  <option>kerosene</option>
+                                  <option>thinner</option>
+                                  <option>lpg</option>
+                                </select>
+                              </div>                     
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="font-weight-bold" class="font-weight-bold" for="InputDistance">Distance</label>
+                                <input type="number" class="form-control" id="InputDistance" aria-describedby="distanceHelp" placeholder="Enter distance" value="10">
+                                <small id="distanceHelp" class="form-text">Valid values: 10 - 190.</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="InputDesibel">Desibel</label>
+                                <input type="number" class="form-control" id="InputDesibel" aria-describedby="desibelHelp" placeholder="Enter desibel" value="72">
+                                <small id="desibelHelp" class="form-text">Valid values: 72 - 113.</small>
+                            </div>
+                        </div>
+                        <div class="col-sm">             
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="InputAirflow">Airflow</label>
+                                <input type="number" class="form-control" id="InputAirflow" aria-describedby="airflowHelp" placeholder="Enter airflow" value="0">
+                                <small id="airflowHelp" class="form-text">Valid values: 0 - 17.</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="InputFrequency">Frequency</label>
+                                <input type="number" class="form-control" id="InputFrequency" aria-describedby="frequencyHelp" placeholder="Enter frequency" value="1">
+                                <small id="frequencyHelp" class="form-text">Valid values: 1 - 75.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-light" id="reset">Reset</button>
+                        <button type="button" class="btn btn-light" id="predict">Predict</button>
+                    </div>
+                </div>
+            </div>                  
+        </form>     
+    </div>
+    <h3 id="predictionMessage" class="display-5 text-light text-center"></h3>
+    <h3 id="predictionPercentage" class="display-5 text-light text-center"></h3>
+    
+    
+    <!-- SCRIPTS SECTION -->
+    <!-- BOOSTRAP -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- ADD CUSTOM JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
