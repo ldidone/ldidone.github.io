@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    var loading = $("#loading")
+    loading.hide();
+    var predictionMsg = $("#predictionMessage")
+    var predictionPerc = $("#predictionPercentage")
+    var card = $("#specialCard")
 
     function validInputs() {
         size = parseInt($('#InputSize').val())
@@ -27,12 +32,7 @@ $(document).ready(function() {
         }
 
         return true
-    }
-
-    var predictionMsg = $("#predictionMessage")
-    var predictionPerc = $("#predictionPercentage")
-    var resetButton = $("#reset")
-    var card = $("#specialCard")
+    }   
 
     function hideMessages() {
         predictionMsg.hide();
@@ -43,15 +43,17 @@ $(document).ready(function() {
     }
     hideMessages();
 
-    function changeResetButton(state, opacity) {
-        resetButton.prop('disabled', state);
-        resetButton.css('opacity', opacity);
+    function changeButton(selector, state, opacity) {
+        button = $(selector)
+        button.prop('disabled', state);
+        button.css('opacity', opacity);
     }
 
-    changeResetButton(false, '0.7');
+    changeButton("#reset", true, '0.7');
 
     $("#reset").click(function() {
-        changeResetButton(true, '0.7');
+        loading.hide();
+        changeButton("#reset", true, '0.7');
 
         $('#InputSize').val("1")
         $("#InputFuel").val("gasoline")
@@ -69,7 +71,10 @@ $(document).ready(function() {
     });
 
     $("#predict").click(function() {
-        changeResetButton(false, '1');
+        loading.show();
+        changeButton("#reset", false, '1');
+        changeButton("#predict", true, '0.7');
+
         areValids = validInputs()
         if (areValids) {
             var URL = "https://acousticextinguisherfireapi.herokuapp.com/predict";
@@ -93,17 +98,22 @@ $(document).ready(function() {
                     'accept': 'application/json',
                 },
                 success: function (result) {
-                    console.log(result);
+                    loading.hide();
+                    changeButton("#predict", false, '1');
                     displayMessage(result);
                 },
                 
                 error: function (xhr, status) {
                     alert("error");
+                    changeButton("#predict", false, '1');
+                    loading.hide();
                 },
                 async:true
-            })     
+            })   
         } else {
             alert("Invalid inputs")
+            loading.hide();
+            changeButton("#predict", false, '1');
         }       
     });
 
